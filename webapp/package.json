@@ -1,0 +1,43 @@
+{
+  "name": "app-front",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.6.0",
+    "@material-ui/icons": "^4.5.1",
+    "@material-ui/styles": "^4.8.2",
+    "@types/react": "^16.9.19",
+    "axios": "^0.19.0",
+    "lodash": "^4.17.15",
+    "node-sass": "^4.13.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-grid-layout": "^0.17.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0",
+    "react-scrollbars-custom": "^4.0.21",
+    "react-sticky-header": "^0.2.0",
+    "styled-components": "^5.0.0"
+  },
+  "scripts": {
+    "start": "PORT=8081 react-scripts start",
+    "build": "PORT=8081 react-scripts build",
+    "test": "PORT=8081 react-scripts test",
+    "eject": "PORT=8081 react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

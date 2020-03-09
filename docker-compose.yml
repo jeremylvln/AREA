@@ -1,0 +1,96 @@
+version: '3'
+
+services:
+  server:
+    build: 'backend/'
+    environment:
+      - HOST=${APP_HOST}
+      - PORT=${APP_PORT}
+      - FRONT_HOST
+      - FRONT_CALLBACK_URL
+      - DATABASE_USERNAME=${POSTGRES_USER}
+      - DATABASE_PASSWORD=${POSTGRES_PASSWORD}
+      - DATABASE_NAME=${POSTGRES_DB}
+      - DATABASE_HOST=${POSTGRES_HOST}
+      - DATABASE_PORT=${POSTGRES_PORT}
+      - REDIS_PORT
+      - REDIS_HOST
+      - SESSION_SECRET
+      - AZURE_TENANT
+      - AZURE_CLIENT_ID
+      - AZURE_CLIENT_SECRET
+      - AZURE_REDIRECT_URL
+      - GITHUB_CLIENT_ID
+      - GITHUB_CLIENT_SECRET
+      - GITHUB_CALLBACK_URL
+      - FACEBOOK_CLIENT_ID
+      - FACEBOOK_CLIENT_SECRET
+      - FACEBOOK_CALLBACK_URL
+      - GOOGLE_CLIENT_ID
+      - GOOGLE_CLIENT_SECRET
+      - GOOGLE_CALLBACK_URL
+      - WEATHER_API_TOKEN
+      - TWITTER_CONSUMER_KEY
+      - TWITTER_CONSUMER_SECRET
+      - TWITTER_CALLBACK_URL
+      - SLACK_CLIENT_ID
+      - SLACK_CLIENT_SECRET
+      - SLACK_CALLBACK_URL
+      - DISCORD_CLIENT_ID
+      - DISCORD_CLIENT_SECRET
+      - DISCORD_CALLBACK_URL
+      - TWITCH_CLIENT_ID
+      - YOUTUBE_API_KEY
+      - ALPHA_VANTAGE_API_KEY
+      - TWILIO_ACCOUNT_SID
+      - TWILIO_AUTH_TOKEN
+      - TWILIO_PHONE_NUMBER
+    ports:
+      - '${APP_PORT}:${APP_PORT}'
+    networks:
+      - backend
+    volumes:
+      - ./backend/logs:/app/logs
+
+  db:
+    image: 'postgres:alpine'
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - '${POSTGRES_PORT}:${POSTGRES_PORT}'
+    networks:
+      - backend
+    volumes:
+      - database-volume:/var/lib/postgresql/data
+
+  redis:
+    image: 'redis:alpine'
+    ports:
+      - '${REDIS_PORT}:${REDIS_PORT}'
+    networks:
+      - backend
+
+  client_web:
+    build: 'webapp/'
+    depends_on:
+      - client_mobile
+    environment:
+      - PORT=${FRONT_PORT}
+    ports:
+      - '${FRONT_PORT}:${FRONT_PORT}'
+    volumes:
+      - apk:/mobile_app/
+
+  client_mobile:
+    build: 'mobileapp/'
+    volumes:
+      - apk:/mobile_app/
+
+networks:
+  backend:
+
+volumes:
+  database-volume:
+  apk:

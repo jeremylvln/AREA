@@ -1,0 +1,8 @@
+# Dist
+dist/
+
+*.spec.ts
+*.e2e-spec.ts
+*-mock.helper.ts
+
+test/

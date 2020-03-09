@@ -1,0 +1,798 @@
+{
+	"info": {
+		"_postman_id": "61600602-a2f2-4f14-97cc-0b960079e301",
+		"name": "AREA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/auth",
+			"item": [
+				{
+					"name": "List available auth methods",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/auth/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register a local user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test@localhost\",\n\t\"password\": \"test\",\n\t\"firstname\": \"Jérémy\",\n\t\"lastname\": \"Levilain\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/register",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login a local user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test@localhost\",\n\t\"password\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get the currently logged user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{auth}}/auth/me",
+							"host": [
+								"{{auth}}"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get link state",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/auth/linkstate",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"linkstate"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "/modules",
+			"item": [
+				{
+					"name": "/actions",
+					"item": [
+						{
+							"name": "List available actions",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/modules/actions",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"modules",
+										"actions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get the form of an action",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/modules/actions/cron/form",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"modules",
+										"actions",
+										"cron",
+										"form"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get an instance of an action",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/modules/actions/cron/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"modules",
+										"actions",
+										"cron",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create an instance of an action",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"ip\": \"mc.hypixel.net\",\n\t\"players\": 20000,\n\t\"comparison\": \">\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/modules/actions/minecraft-players",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"modules",
+										"actions",
+										"minecraft-players"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update an instance of an action",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"cron\": \"10 * * * *\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/modules/actions/cron/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"modules",
+										"actions",
+										"cron",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an instance of an action",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/modules/actions/cron/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"modules",
+										"actions",
+										"cron",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "/reactions",
+					"item": [
+						{
+							"name": "List available reactions",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/modules/reactions",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"modules",
+										"reactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get the form of a reaction",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/modules/reactions/REPLACE_ME/form",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"modules",
+										"reactions",
+										"REPLACE_ME",
+										"form"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get an instance of a reaction",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/modules/reactions/REPLACE_ME/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"modules",
+										"reactions",
+										"REPLACE_ME",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create an instance of a reaction",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/modules/reactions/REPLACE_ME",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"modules",
+										"reactions",
+										"REPLACE_ME"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update an instance of a reaction",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/modules/reactions/REPLACE_ME/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"modules",
+										"reactions",
+										"REPLACE_ME",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an instance of a reaction",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/modules/reactions/REPLACE_ME/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"modules",
+										"reactions",
+										"REPLACE_ME",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "/workflows",
+			"item": [
+				{
+					"name": "List logged user workflows",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/workflows",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workflows"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a workflow",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/workflows/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workflows",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a workflow",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Awesome\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/workflows",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workflows"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a workflow",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"My Awesome New Name\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/workflows/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workflows",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a workflow",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/workflows/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workflows",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enable/Disable a workflow",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"enabled\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/workflows/1/enable",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workflows",
+								"1",
+								"enable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Link an action to a workflow",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"kind\": \"cron\",\n\t\"id\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/workflows/1/actions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workflows",
+								"1",
+								"actions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Link a reaction to a workflow",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"kind\": \"REPLACE_ME\",\n\t\"id\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/workflows/1/reactions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workflows",
+								"1",
+								"reactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unlink an action from a workflow",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"kind\": \"cron\",\n\t\"id\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/workflows/1/actions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workflows",
+								"1",
+								"actions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unlink a reaction from a workflow Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"kind\": \"REPLACE_ME\",\n\t\"id\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/workflows/1/reactions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"workflows",
+								"1",
+								"reactions"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "about.json",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a6e05011-8a6c-47e9-9c7e-4c69363c3648",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "a69089a6-2cbe-4b3e-99d9-393294cf8082",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "01ede27d-ef1d-4e9b-9680-d03d71642271",
+			"key": "host",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

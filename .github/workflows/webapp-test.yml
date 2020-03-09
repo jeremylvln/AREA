@@ -1,0 +1,25 @@
+name: Webapp Test
+
+on:
+  push:
+    paths:
+      - '.github/workflows/webapp-*.yml'
+      - 'webapp/**'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      
+      - name: Setup Node
+        uses: actions/setup-node@v1
+
+      - name: Install dependencies
+        run: cd webapp && npm install
+      
+      - name: Run tests
+        run: cd webapp && npm run test
+        env:
+          CI: true

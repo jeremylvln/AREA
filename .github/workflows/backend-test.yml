@@ -1,0 +1,24 @@
+name: Backend Test
+
+on:
+  push:
+    paths:
+      - '.github/workflows/backend-*.yml'
+      - 'backend/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      
+      - name: Setup Node
+        uses: actions/setup-node@v1
+
+      - name: Install dependencies
+        run: cd backend && npm install
+      
+      - name: Run tests
+        run: cd backend && npm run test
