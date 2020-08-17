@@ -1,4 +1,4 @@
-# Zia ![Test](https://github.com/IamBlueSlime/Zia/workflows/Test/badge.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE.txt)
+# AREA ![Test](https://github.com/IamBlueSlime/Zia/workflows/Test/badge.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE.txt)
 
 ## Introduction
 
